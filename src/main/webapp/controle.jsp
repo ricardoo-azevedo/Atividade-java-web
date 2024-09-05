@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.aula.model.Cliente, com.aula.model.ClienteDAO" %>
+<%@ page import="com.aula.model.Cliente, com.aula.model.ClienteDAO, com.aula.interfaces.ClienteInterface" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -16,11 +16,10 @@
             String email = request.getParameter("email");
             String senha = request.getParameter("senha");
             
-
             Cliente cliente = new Cliente(cpf, nome, email, senha);
 
-            ClienteDAO clienteDAO = new ClienteDAO();
-            clienteDAO.adicionar(cliente);
+            ClienteInterface icliente = new ClienteDAO();
+            icliente.adicionar(cliente);
         %>
         <ul class="list-group">
             <li class="list-group-item">CPF: <%= cliente.getCpf() %></li>
